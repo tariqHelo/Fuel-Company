@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gifts </title>
+  <title>عصيد للطاقة  </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -66,7 +66,7 @@
         @else
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-         <div class="row">
+         {{-- <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
@@ -126,7 +126,78 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+        </div> --}}
+         <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+         <div class="row">
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                
+                <h3></h3>
+
+                <p>عدد المنتجات</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+               
+                <h3></h3>
+
+                <p>عدد التصنيفات</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                
+                <h3></h3>
+
+                <p>عدد القطع</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+           <!-- ./col -->
+           <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                
+                <h3></h3>
+
+                <p>جميع المستخدمين</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
+        <!-- /.row -->
+      </div>  
         <!-- /.row -->
        </div>  
     @endif    
@@ -192,76 +263,37 @@
 				var index = parseInt($(this).attr("data-index")) + 1;
 				$(this).attr("data-index" , index);
 				$(".mt-repeater-item").append(`
-		       <div class="row">
-                                 <div class="col-md-1">
-                          <label class="control-label"> الإسم</label>
-                          <input  name="data[${index}][name]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label"> الرقم </label>
-                          <input  name="data[${index}][number]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label"> النوع</label>
-                          <input  name="data[${index}][type]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label"> باركود</label>
-                          <input  name="data[${index}][barcode]" class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label">الكمية</label>
-                          <input  name="data[${index}][qty]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                        <label class="control-label">التكلفة <span class="oldprename" style="color: #ccc"></span></label>
-                        <select name="data[${index}][price]"  class="form-control input-lg selectsize prevname">
-                          <option value="">نص حر</option>
-                          <option value="name"> الإسم</option>
-                          <option value="numberId"> رقم الهوية</option>
-                          <option value="email">  الإيميل</option>
-                          <option value="mobile"> رقم الجوال</option>
-                          <option value="class"> الصف </option>
-                          <option value="school">  المدرسة</option>
-
-                        </select>
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label"> الشراء</label>
-                          <input  name="data[${index}][purchasing_price]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label">الشراء2</label>
-                          <input  name="data[${index}][purchasing_price2]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                          <label class="control-label">صورة</label>
-                          <input  name="data[${index}][image]"  class="form-control" type="string">
-                      </div>
-                      <div class="col-md-1">
-                        <label class="control-label">التخصيص <span class="oldprename" style="color: #ccc"></span></label>
-                        <select name="data[${index}][personalization]" class="form-control input-lg selectsize prevname">
-                          <option value="">نص حر</option>
-                          <option value="name" > الإسم</option>
-                          <option value="numberId"> رقم الهوية</option>
-
-                        </select>
-                      </div>
-                      <div class="col-md-1">
-                        <label class="control-label">الماركة <span class="oldprename" style="color: #ccc"></span></label>
-                        <select name="data[${index}][brand]" class="form-control input-lg selectsize prevname">
-                          <option value="">أجنبي</option>
-                          <option value="name"> دولي</option>
-                          <option value="numberId"> رقم</option>
-
-                        </select>
-                      </div>
-                      <div class="col-md-1" style="margin: 30px 0">
-                          <a href="javascript:;" data-repeater-delete class="delete-row btn btn-danger btn-sm btn-icon btn-circle mt-repeater-delete">
-                            <i class="fa fa-trash"></i>
-                          </a>
-                      </div>
-                  </div>
+		      <div class="row">
+                <div class="col-md-2">
+                    <label class="control-label"> عداد 1</label>
+                    <input  name="data[${index}][name]" class="form-control" type="string">
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label"> عداد 2 </label>
+                    <input  name="data[${index}][number]"   class="form-control" type="string">
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label"> عداد 3</label>
+                    <input  name="data[${index}][type]"    class="form-control" type="string">
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label"> عدداد 4</label>
+                    <input  name="data[${index}][barcode]"  class="form-control" type="string">
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">عداد 5</label>
+                    <input  name="data[${index}][qty]"    class="form-control" type="string">
+                </div>
+                <div class="col-md-1">
+                    <label class="control-label">عداد 6</label>
+                    <input  name="data[${index}][qty]"    class="form-control" type="string">
+                </div>
+                <div class="col-md-1" style="margin: 30px 0">
+                    <a href="javascript:;" data-repeater-delete class="delete-row btn btn-danger btn-sm btn-icon btn-circle mt-repeater-delete">
+                      <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+         </div>
 				`);
 			});
 			$("body").on("click" , ".delete-row" , function(){

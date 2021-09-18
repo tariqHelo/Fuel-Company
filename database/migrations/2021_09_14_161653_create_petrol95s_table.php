@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetrol91sTable extends Migration
+class CreatePetrol95sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePetrol91sTable extends Migration
      */
     public function up()
     {
-        Schema::create('petrol91s', function (Blueprint $table) {
+        Schema::create('petrol95s', function (Blueprint $table) {
             $table->id();
             $table->json('meter')->nullable();
             $table->integer('total')->default(0);
@@ -34,6 +34,6 @@ class CreatePetrol91sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petrol91s');
+        Schema::dropIfExists('petrol95s');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Petrol91 extends Model
+class Petrol95 extends Model
 {
     use HasFactory;
 

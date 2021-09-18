@@ -54,7 +54,7 @@
           </li>
          @endcan 
            <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('petrol91.index')}}" class="nav-link">
               <i class="nav-icon fas fa-expand-arrows-alt"></i>
               <p>
                 91                
@@ -62,39 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-th-large"></i>
-              <p>
-                95                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                البنوك                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                أنشطة                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fa-circle nav-icon"></i>
-              <p>
-                الصندوق                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('diesel.index')}}" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 الديزل                
@@ -102,12 +70,98 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fa fa-lightbulb"></i>
+            <a href="{{route('petrol95.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th-large"></i>
               <p>
-                نقاط البيع                
+                95                
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('kaz.index')}}" class="nav-link">
+              <i class="nav-icon fa fa-lightbulb"></i>
+              <p>
+                كاز                  
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+               إدارة البنوك            
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('banks.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>جميع البنوك</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('banks.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>تقارير البنوك</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+               <p>
+               إدارة الإنشطة            
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('actitvity.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>جميع الإنشطة</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('actitvity.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>تقارير الإنشطة</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-circle"></i>
+              <p>
+                الصندوق                
+              </p>
+            </a>
+          </li>
+           <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-lightbulb"></i>
+               <p>
+               إدارة نقاط البيع            
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('sellingpoints.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>جميع نقاط البيع</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('sellingpoints.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>تقارير نقاط البيع</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="" class="nav-link">
