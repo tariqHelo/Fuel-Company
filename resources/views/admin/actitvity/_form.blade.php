@@ -1,13 +1,41 @@
 
     <div class="card-body">
                   <div class="form-group">
-                    <label> إسم النشاط  </label>
-                    <input type="string" required class="form-control  @error('name') is-invalid @enderror" name="name"  placeholder=" إسم البنك" value="{{ old('name' , $actitvity->name) }}">
-                      @error('name')
+                    <label>البنشر  </label>
+                    <input type="number" class="form-control  @error('pincher') is-invalid @enderror" name="pincher"  value="{{ old('pincher' , $actitvity->pincher) }}">
+                      @error('pincher')
                         <p class="text-danger">{{ $message }}</p>
                       @enderror
                   </div>
                   <div class="form-group">
+                    <label> البقالة  </label>
+                    <input type="number" class="form-control  @error('grocery') is-invalid @enderror" name="grocery"  value="{{ old('grocery' , $actitvity->grocery) }}">
+                      @error('grocery')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                    <label> المغسلة  </label>
+                    <input type="number" class="form-control  @error('washing') is-invalid @enderror" name="washing"  value="{{ old('washing' , $actitvity->washing) }}">
+                      @error('washing')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                    <label> الشقة  </label>
+                    <input type="number" class="form-control  @error('flat') is-invalid @enderror" name="flat"  value="{{ old('flat' , $actitvity->flat) }}">
+                      @error('flat')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                    <label> الغرفة  </label>
+                    <input type="integer" class="form-control  @error('room') is-invalid @enderror" name="room"  value="{{ old('room' , $actitvity->room) }}">
+                      @error('room')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div>
+                  {{-- <div class="form-group">
                       <label for="status"> حالة النشاط</label>
                       <div>
                           <div class="form-check">
@@ -27,7 +55,7 @@
                         @enderror
                       </div>
                       
-                  </div>
+                  </div> --}}
       </div>
         <!-- /.card-body -->
 

@@ -40,8 +40,17 @@ class ActivitiesController extends Controller
      */
     public function store(Request $request)
     {   
-        $actitvity = Activities::create($request->all());
-        \Session::flash("msg", "s:تم إضافة النشاط ($actitvity->name) بنجاح");
+        $total = $request->pincher + $request->grocery +
+        $request->washing + $request->flat + $request->room ;
+        $actitvity = Activities::create([
+            'pincher' => $request->pincher,
+            'grocery' => $request->grocery,
+            'washing' => $request->washing,
+            'flat' => $request->flat,
+            'room' => $request->room,
+            'total' => $total
+        ]);
+        \Session::flash("msg", "s:تم إضافة النشاط  بنجاح");
         return redirect()->route('actitvity.index');
     }
 

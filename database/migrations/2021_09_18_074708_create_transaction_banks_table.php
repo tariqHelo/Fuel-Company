@@ -16,6 +16,7 @@ class CreateTransactionBanksTable extends Migration
         Schema::create('transaction_banks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bank_id')->nullable()->constrained('banks', 'id')->nullOnDelete();
+            $table->float('price')->default(0);
             $table->integer('total')->default(0);
             $table->timestamps();
         });

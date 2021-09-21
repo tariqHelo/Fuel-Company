@@ -24,8 +24,12 @@ use App\Http\Controllers\{
     TransactionActitvityController,
     TransactionBankController,
     TransactionSellingPointsController,
-    WaterController
-    
+    WaterController,
+
+    Repository91Controller,
+    Repository95Controller,
+    RepositoryDieselController,
+    RepositoryKazController
 
 };
 
@@ -40,15 +44,17 @@ use App\Http\Controllers\{
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
+
 
 Route::get('/', function () {
 return view('layouts.admin');
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 
 /* Start Admin Route */
@@ -72,14 +78,11 @@ Route::resource('kaz', KazController::class);
 /* Start Bank Route */
 Route::resource('banks', BankController::class);
 Route::get('banks/delete/{id}', [BankController::class ,'destroy'])->name('banks.delete');
-
-Route::resource('transaction_bank', TransactionBank::class);
+Route::resource('transaction_bank', TransactionBankController::class);
 /* End Bank Route */
-
 /* Start Actitvity Route */
 Route::resource('actitvity', ActivitiesController::class);
 Route::get('actitvity/delete/{id}', [ActivitiesController::class ,'destroy'])->name('actitvity.delete');
-
 Route::resource('transaction_actitvity', TransactionActitvityController::class);
 /* End Actitvity Route */
 
@@ -87,8 +90,19 @@ Route::resource('transaction_actitvity', TransactionActitvityController::class);
 Route::resource('sellingpoints', SellingPointController::class);
 Route::get('sellingpoints/delete/{id}', [SellingPointController::class
 ,'destroy'])->name('sellingpoints.delete');
-
 Route::resource('transaction_sellingpoints', TransactionSellingPointsController::class);
 /* End Sellingpoints Route */
 
-require __DIR__.'/auth.php';
+
+/* Start repository91 Route */
+Route::resource('repository91', Repository91Controller::class);
+/* End repository91 Route */
+/* Start RepositoryDiesel Route */
+Route::resource('repositorydiesel', RepositoryDieselController::class);
+/* End RepositoryDiesel Route */
+/* Start RepositoryKaz Route */
+Route::resource('repositorykaz', RepositoryKazController::class);
+/* End RepositoryKaz Route */
+/* Start repository95 Route */
+Route::resource('repository95', Repository95Controller::class);
+/* End repository95 Route */

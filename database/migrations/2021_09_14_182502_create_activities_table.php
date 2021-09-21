@@ -15,12 +15,23 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('status', ['active', 'draft']);
+            $table->integer('pincher');
+            $table->integer('grocery');
+            $table->integer('washing');
+            $table->integer('flat');
+            $table->integer('room');
+            $table->float('total');
+
+            // $table->string('name');
+            // $table->enum('status', ['active', 'draft']);
             $table->timestamps();
         });
     }
-
+// Pincher
+// grocery shop
+// Washing machine
+// Flat
+// the room
     /**
      * Reverse the migrations.
      *

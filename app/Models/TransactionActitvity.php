@@ -11,6 +11,12 @@ class TransactionActitvity extends Model
 
     protected $fillable = [
     'actitvity_id',
-    'total'
+    'total',
+    'price'
     ];
+
+    public function actitvity()
+    {
+        return $this->belongsTo(Activities::class);
+    }
 }

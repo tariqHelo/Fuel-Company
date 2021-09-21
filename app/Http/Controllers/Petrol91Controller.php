@@ -14,6 +14,7 @@ class Petrol91Controller extends Controller
      */
     public function index()
     {   
+      // dd(20);
        $js = Petrol91::select('meter')->get();
        $petrol91s = Petrol91::all();
        $items = json_decode(($js[0]['meter']),true);
@@ -43,16 +44,21 @@ class Petrol91Controller extends Controller
      */
     public function store(Request $request)
     {
-        $last = Petrol91::pluck('total')->last();
-        $price = $request->price;
-        $total = 
+
+         // $data = $request->data;
+         // dd($request->data);
+
+          $last = Petrol91::pluck('total')->last();
+          $price = $request->price;
+
+         $total = 
           $request->data[0]['meter1'] 
         + $request->data[0]['meter2'] 
         + $request->data[0]['meter3']
         + $request->data[0]['meter4']
         + $request->data[0]['meter5']
         + $request->data[0]['meter6'];
-       
+        //dd($total);
         $qty = $last - $total;
         $caliber = $request->caliber - $qty ;
         $clear = $caliber - $qty;
@@ -69,7 +75,7 @@ class Petrol91Controller extends Controller
             'value'        => $value,
             'size'         => $request->size
         ]);         
-        \Session::flash("msg", "s:تم إضافة المنتج ($petrol91->price) بنجاح");
+       \Session::flash("msg", "s:تم إضافة المنتج ($petrol91->price) بنجاح");
         return redirect()->route('petrol91.index');
         
       //  dd($multiplied->all());

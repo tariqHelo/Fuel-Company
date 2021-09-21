@@ -9,7 +9,10 @@ class SellingPoint extends Model
 {
     use HasFactory;
         protected $fillable = [
-        'name',
-        'status'
+        // 'name',
+        // 'status'
+           'price1',
+           'price2',
+           'total',
         ];
 }

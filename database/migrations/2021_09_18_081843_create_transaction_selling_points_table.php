@@ -16,6 +16,7 @@ class CreateTransactionSellingPointsTable extends Migration
         Schema::create('transaction_selling_points', function (Blueprint $table) {
             $table->id();
             $table->foreignId('selling_id')->nullable()->constrained('selling_points', 'id')->nullOnDelete();
+            $table->float('price')->default(0);
             $table->integer('total')->default(0);
             $table->timestamps();
         });

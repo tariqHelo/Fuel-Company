@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionActitvitiesTable extends Migration
+class CreateRepository91sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateTransactionActitvitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_actitvities', function (Blueprint $table) {
+        Schema::create('repository91s', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('actitvity_id')->nullable()->constrained('actitvities', 'id')->nullOnDelete();
-            $table->float('price')->default(0);
-            $table->integer('total')->default(0);
+            $table->foreignId('petrol91_id')->nullable()->constrained('petrol91s', 'id')->nullOnDelete();
+            $table->float('sales')->default(0);
+            $table->float('received')->default(0);
+            $table->float('balance')->default(0);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -29,6 +29,6 @@ class CreateTransactionActitvitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_actitvities');
+        Schema::dropIfExists('repository91s');
     }
 }

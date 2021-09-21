@@ -15,8 +15,11 @@ class CreateSellingPointsTable extends Migration
     {
         Schema::create('selling_points', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('status', ['active', 'draft']);
+           // $table->string('name');
+            $table->float('price1')->default(0);
+            $table->float('price2')->default(0);
+            $table->float('total')->default(0);
+           // $table->enum('status', ['active', 'draft']);
             $table->timestamps();
         });
     }

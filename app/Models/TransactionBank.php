@@ -10,6 +10,22 @@ class TransactionBank extends Model
     use HasFactory;
     protected $fillable = [
         'bank_id',
-        'total'
+        'total',
+        'price'
+
     ];
+
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
+    }
+
+    public function sum()
+    {
+      $sum = TransactionBank::sum('price');
+       
+      return $sum;
+     // dd($sum);
+    }
+
 }

@@ -101,14 +101,51 @@
                   <p>جميع البنوك</p>
                 </a>
               </li>
+
               <li class="nav-item">
-                <a href="{{route('banks.index')}}" class="nav-link">
+                <a href="{{route('transaction_bank.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>تقارير البنوك</p>
                 </a>
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-lightbulb"></i>
+              <p>
+              المخزون              
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('repository91.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>بنزين 91</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('repositorydiesel.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ديزل</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="{{route('repository95.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>بنزين 95</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('repositorykaz.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>كاز </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -211,15 +248,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fa fa-lightbulb"></i>
-              <p>
-                المخزون                 
-              </p>
-            </a>
-          </li>
-
           <li class="nav-item">
                     <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

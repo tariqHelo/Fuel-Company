@@ -39,8 +39,14 @@ class SellingPointController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-         $sellingpoint = SellingPoint::create($request->all());
+    {    
+       //  dd($request->price1);
+         $total = $request->price1 + $request->price2;
+         $sellingpoint = SellingPoint::create([
+           'price1' => $request->price1,
+           'price2' => $request->price2,
+           'total' => $total,
+         ]);
          \Session::flash("msg", "s:تم إضافة نقطة البيع ($sellingpoint->name) بنجاح");
          return redirect()->route('sellingpoints.index');
     }

@@ -23,8 +23,11 @@
                 <thead>
                   <tr>
                   <th>#</th>
-                  <th>إسم نقطة البيع</th>
-                  <th>الحالة</th>
+                  <th>التاريخ</th>
+                  <th>الموازنة الإولي</th>
+                  <th>الموازنة الثانية</th>
+
+                  {{-- <th>الحالة</th> --}}
                   <th>الإجراءات</th>
                   </tr>
                 </thead>
@@ -33,14 +36,17 @@
                   @foreach($sellingpoints as $sellingpoint)
                     <tr>
                         <th>{{$sellingpoint->id}}</th>
-                        <th>{{$sellingpoint->name}}</th>
-                        <td>
+                        <th>{{$sellingpoint->created_at->format('d-m-Y')}}</th>
+                        <th>{{$sellingpoint->price1}}</th>
+                         <th>{{$sellingpoint->price2}}</th>
+                         <th>{{$sellingpoint->total}}</th>
+                        {{-- <td>
                               @if($sellingpoint->status=='active')
                                   <span class="btn btn-success btn-sm">مفعل</span>
                               @elseif($sellingpoint->status=='draft')
                                   <span class="btn btn-danger btn-sm">غير مفعل</span>
                               @endif
-                          </td>
+                          </td> --}}
                         <td>   
                               <a href="{{route('sellingpoints.edit' , $sellingpoint->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
                               <a href="{{route('sellingpoints.delete' , $sellingpoint->id )}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
@@ -50,9 +56,12 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                  <th>#</th>
-                  <th>إسم البنك</th>
-                  <th>الحالة</th>
+                   <th>#</th>
+                  <th>التاريخ</th>
+                  <th>الموازنة الإولي</th>
+                  <th>الموازنة الثانية</th>
+
+                  {{-- <th>الحالة</th> --}}
                   <th>الإجراءات</th>
 
                   </tr>

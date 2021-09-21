@@ -10,6 +10,12 @@ class TransactionSellingPoints extends Model
     use HasFactory;
      protected $fillable = [
         'selling_id',
-        'total'
+        'total',
+        'price'
      ];
+
+    public function selling()
+    {
+        return $this->belongsTo(SellingPoint::class);
+    }
 }

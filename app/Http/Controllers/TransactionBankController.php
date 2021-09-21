@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TransactionBank;
 use Illuminate\Http\Request;
+use App\Models\Bank;
+use Illuminate\Support\Facades\DB;
 
 class TransactionBankController extends Controller
 {
@@ -13,8 +15,21 @@ class TransactionBankController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        
+        $total = TransactionBank::orderBy('created_at')->sum('total');
+        //dd($total);
+         $transactionbanks = TransactionBank::orderBy('created_at')->get()->groupBy(function($data) {
+            return $data=[
+                $data->created_at->format('Y-m-d'),
+            ];
+             });
+        $banks = Bank::all();
+     //   dd($transactionbanks);
+        return view('admin.transaction_bank.index',[
+          'banks' => $banks,
+          'transactionbanks' => $transactionbanks
+        ]);
     }
 
     /**
@@ -23,8 +38,13 @@ class TransactionBankController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    { 
+        
+      $banks = Bank::where('status' ,'=', 'active')->pluck('name' , 'id');
+       return view('admin.transaction_bank.create',[
+          'banks' => $banks,
+          'transactionbanks' => new TransactionBank()
+        ]);
     }
 
     /**
@@ -34,8 +54,16 @@ class TransactionBankController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+       // $total = TransactionBank::pluck('total')->last();
+        TransactionBank::where('total')->increment("total",$request->price);
+       // dd($total);
+         $transactionbank = TransactionBank::create([
+             'price' => $request->price,
+             'bank_id' => $request->bank_id,
+         ]);
+         \Session::flash("msg", "s:تم إضافة العملية ($transactionbank->price) بنجاح");
+         return redirect()->route('transaction_bank.index');
     }
 
     /**
