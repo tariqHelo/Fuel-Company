@@ -13,8 +13,9 @@ class WaterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {  
+
+       return view('admin.water.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class WaterController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.water.create');
     }
 
     /**

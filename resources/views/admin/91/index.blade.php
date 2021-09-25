@@ -44,7 +44,7 @@
                         <td>{{$petrol91->created_at->format('d-m-Y')}}</td>
                         {{-- {{dd($items)}} --}}
                          @if(isset($items))
-                            @foreach($items as $i => $obj)
+                            @foreach($items as $key => $obj)
                                 <td>{{ $obj['meter1'] }}</td>
                                 <td>{{ $obj['meter2'] }}</td>
                                 <td>{{ $obj['meter3'] }}</td>

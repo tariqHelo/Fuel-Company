@@ -209,7 +209,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('meran.index')}}" class="nav-link">
               <i class="nav-icon fa fa-lightbulb"></i>
               <p>
                 الميران                 
@@ -217,7 +217,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('water.index')}}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 ماء                 
@@ -225,7 +225,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('hesnya.index')}}" class="nav-link">
               <i class="nav-icon fa fa-lightbulb"></i>
               <p>
                 حصينة                 
@@ -233,7 +233,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('delayed.index')}}" class="nav-link">
               <i class="nav-icon fa fa-lightbulb"></i>
               <p>
                 أجلة                 
@@ -241,7 +241,7 @@
             </a>
           </li>
            <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('claims.index')}}" class="nav-link">
               <i class="nav-icon fa fa-lightbulb"></i>
               <p>
                 مطالبات                  

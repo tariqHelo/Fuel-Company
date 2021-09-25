@@ -13,8 +13,11 @@ class MeranController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {    
+        $merans = Meran::all();
+        return view('admin.meran.index',[
+            'merans' => $merans,
+        ]);
     }
 
     /**
@@ -24,7 +27,9 @@ class MeranController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.meran.create',[
+           'meran' => new Meran()
+       ]);
     }
 
     /**
@@ -34,8 +39,28 @@ class MeranController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+
+      $id_credit = Meran::pluck('total_credit')->last();
+      $id_debt = Meran::pluck('total_debt')->last();
+    //  dd($total_credit ,$total_debt );
+
+        $total_debt = $id_debt + $request->partial_debt;
+        $total_credit = $id_credit + $request->partial_debt;
+
+
+        
+        $meran = new Meran;
+        $meran->statement = $request->statement;
+        $meran->partial_credit = $request->partial_debt;
+        $meran->partial_debt = $request->partial_debt;
+        $meran->total_credit += $total_credit;
+        $meran->total_debt += $total_debt;
+        $meran->save();
+        \Session::flash("msg", "s:تم إضافة الميران ($meran->statement) بنجاح");
+        return redirect()->route('meran.index');
+     //  dd('ok');
+
     }
 
     /**

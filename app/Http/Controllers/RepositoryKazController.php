@@ -14,7 +14,7 @@ class RepositoryKazController extends Controller
      */
     public function index()
     {
-        //
+      return view('admin.repositorykaz.index');
     }
 
     /**

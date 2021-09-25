@@ -14,7 +14,7 @@ class Repository91Controller extends Controller
      */
     public function index()
     {
-        return view('admin.repository.index');
+        return view('admin.repository91.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class Repository91Controller extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.repository91.create');
     }
 
     /**

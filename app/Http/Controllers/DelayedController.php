@@ -14,7 +14,7 @@ class DelayedController extends Controller
      */
     public function index()
     {
-        //
+       return view('admin.delayed.index');
     }
 
     /**

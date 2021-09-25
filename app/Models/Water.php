@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Water extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'meter',
+        'total',
+        'qty',
+        'price',
+        'value',
+        'difference',
+    ];
+
+        
 }

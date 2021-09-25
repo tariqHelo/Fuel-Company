@@ -14,7 +14,7 @@ class RepositoryDieselController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.repositorydiesel.index');
     }
 
     /**

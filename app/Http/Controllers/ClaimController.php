@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Claim;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ClaimController extends Controller
 {
@@ -12,9 +13,9 @@ class ClaimController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){ 
+        $claims = Claim::all();
+        return view('admin.claims.index')->withClaims($claims);
     }
 
     /**
@@ -24,7 +25,9 @@ class ClaimController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.claims.create',[
+            'claim' => new Claim()
+        ]);
     }
 
     /**
@@ -34,8 +37,10 @@ class ClaimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {    
+         $claim = Claim::create($request->all());
+         \Session::flash("msg", "s:تم إضافة  ($claim->name) بنجاح");
+         return redirect()->route('claims.index');
     }
 
     /**

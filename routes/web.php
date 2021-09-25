@@ -25,7 +25,6 @@ use App\Http\Controllers\{
     TransactionBankController,
     TransactionSellingPointsController,
     WaterController,
-
     Repository91Controller,
     Repository95Controller,
     RepositoryDieselController,
@@ -75,6 +74,28 @@ Route::resource('diesel', DieselController::class);
 Route::resource('kaz', KazController::class);
 /* End Petrol Route */
 
+
+/* Start Meran Route */
+Route::resource('meran', MeranController::class);
+/* End Meran Route */
+
+/* Start Water Route */
+Route::resource('water', WaterController::class);
+/* End Water Route */
+
+/* Start Hesnya Route */
+Route::resource('hesnya', HesnyaController::class);
+/* End Hesnya Route */
+
+/* Start Delayed Route */
+Route::resource('delayed', DelayedController::class);
+/* End Delayed Route */
+
+/* Start Claim Route */
+Route::resource('claims', ClaimController::class);
+/* End Claim Route */
+
+
 /* Start Bank Route */
 Route::resource('banks', BankController::class);
 Route::get('banks/delete/{id}', [BankController::class ,'destroy'])->name('banks.delete');
@@ -92,6 +113,7 @@ Route::get('sellingpoints/delete/{id}', [SellingPointController::class
 ,'destroy'])->name('sellingpoints.delete');
 Route::resource('transaction_sellingpoints', TransactionSellingPointsController::class);
 /* End Sellingpoints Route */
+
 
 
 /* Start repository91 Route */

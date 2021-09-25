@@ -15,6 +15,11 @@ class CreateMeransTable extends Migration
     {
         Schema::create('merans', function (Blueprint $table) {
             $table->id();
+            $table->integer('statement')->nullable();
+            $table->integer('partial_credit')->nullable();
+            $table->integer('total_credit')->nullable();
+            $table->integer('partial_debt')->nullable();
+            $table->integer('total_debt')->nullable();
             $table->timestamps();
         });
     }

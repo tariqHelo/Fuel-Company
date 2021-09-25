@@ -14,7 +14,7 @@ class HesnyaController extends Controller
      */
     public function index()
     {
-        //
+       return view('admin.hasyna.index');
     }
 
     /**

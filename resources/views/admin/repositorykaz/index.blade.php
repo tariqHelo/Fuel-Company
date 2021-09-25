@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title' , 'مخزن بنزين 91')
+@section('title' , 'مخزن  كاز')
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">

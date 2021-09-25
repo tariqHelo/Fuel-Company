@@ -15,14 +15,14 @@ class Petrol91Controller extends Controller
     public function index()
     {   
       // dd(20);
-       $js = Petrol91::select('meter')->get();
+       $response = Petrol91::select('meter')->get();
        $petrol91s = Petrol91::all();
-       $items = json_decode(($js[0]['meter']),true);
+      // $items = json_decode($response , true);
+       $items = json_decode($response[0]['meter'] , true);
       // dd($items);
        return view('admin.91.index',[
         'petrol91s' => $petrol91s,
-        'items' => $items
-
+       'items' => $items
        ]);
     }
 
@@ -46,10 +46,18 @@ class Petrol91Controller extends Controller
     {
 
          // $data = $request->data;
-         // dd($request->data);
+         // dd($request->all());
 
           $last = Petrol91::pluck('total')->last();
+         // dd($last);
           $price = $request->price;
+
+          // if($request->caliber == 0){
+          //  // $caliber =  $request['caliber'] == 0;
+          //   dd(0);
+          // }else{
+          //   dd();
+          // }
 
          $total = 
           $request->data[0]['meter1'] 
@@ -59,17 +67,24 @@ class Petrol91Controller extends Controller
         + $request->data[0]['meter5']
         + $request->data[0]['meter6'];
         //dd($total);
-        $qty = $last - $total;
-        $caliber = $request->caliber - $qty ;
-        $clear = $caliber - $qty;
-        $value = $clear * $price;
+        $qty =($last - $total);
+      //  dd($qty);
+        $cal = ($qty - $request->caliber);
+     //   dd($cal);
+        $clear = ($qty - $cal);
+        //return ($cal - $qty);
+       // dd($cal);
+
+        $value = ($clear * $price);
+       // dd($value);
+
         $dataJson = json_encode($request->data);
       //  dd($dataJson);
         $petrol91 =Petrol91::create([
             'meter'        => $dataJson,
             'total'        => $total,
             'qty'          => $qty,
-            'caliber'      => $caliber,
+            'caliber'      => $cal,
             'clear'        => $clear,
             'price'        => $price,
             'value'        => $value,
@@ -126,3 +141,7 @@ class Petrol91Controller extends Controller
         //
     }
 }
+//  $current = Carbon::today();
+//  $current->toDateString();
+//  // dd($current->day);
+//  if($current->day <= 10){ dd('yes'); }else{ dd('no'); }

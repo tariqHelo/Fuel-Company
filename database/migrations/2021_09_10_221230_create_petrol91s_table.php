@@ -16,11 +16,11 @@ class CreatePetrol91sTable extends Migration
         Schema::create('petrol91s', function (Blueprint $table) {
             $table->id();
             $table->json('meter')->nullable();
-            $table->integer('total')->default(0);
+            $table->integer('total')->default(12136877);
             $table->integer('qty')->default(0);
             $table->integer('caliber')->default(0);
-            $table->integer('clear')->default(0);
-            $table->integer('price')->default(0);
+            $table->float('clear')->default(0);
+            $table->float('price')->default(0);
             $table->integer('value')->default(0);
             $table->integer('size')->default(0);
             $table->timestamps();

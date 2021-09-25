@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class RepositoryKaz extends Model
 {
     use HasFactory;
+    
+    
+
+    public function kaz(){
+      $this->belongsTo(Kaz::class);
+    }
 }
