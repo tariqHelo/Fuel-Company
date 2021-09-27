@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepositoryKazsTable extends Migration
+class CreateInitialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateRepositoryKazsTable extends Migration
      */
     public function up()
     {
-        Schema::create('repository_kazs', function (Blueprint $table) {
+        Schema::create('initials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
-             $table->foreignId('kaz_id')->nullable()->constrained('kazs', 'id')->nullOnDelete();
-             $table->float('sales')->default(0);
-             $table->float('received')->default(0);
-             $table->float('balance')->default(0);
+            $table->integer('number_initial')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateRepositoryKazsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('repository_kazs');
+        Schema::dropIfExists('initials');
     }
 }

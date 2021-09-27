@@ -15,6 +15,8 @@ class CreateClaimsTable extends Migration
     {
         Schema::create('claims', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
              $table->string('name');
              $table->integer('total')->default(0);
              $table->longText('note');

@@ -15,13 +15,12 @@ class Petrol91Controller extends Controller
     public function index()
     {   
       // dd(20);
-       $response = Petrol91::select('meter')->get();
-       $petrol91s = Petrol91::all();
-      // $items = json_decode($response , true);
-       $items = json_decode($response[0]['meter'] , true);
-      // dd($items);
+       $response = Petrol91::get();
+       $items = json_decode($response, true);
+     // $items = json_decode($response[0]['meter'] , true);
+      //dd($items);
        return view('admin.91.index',[
-        'petrol91s' => $petrol91s,
+        //'petrol91s' => $petrol91s,
        'items' => $items
        ]);
     }
@@ -52,12 +51,11 @@ class Petrol91Controller extends Controller
          // dd($last);
           $price = $request->price;
 
-          // if($request->caliber == 0){
-          //  // $caliber =  $request['caliber'] == 0;
-          //   dd(0);
-          // }else{
-          //   dd();
-          // }
+         $current = Carbon::today();
+         $current->toDateString();
+         // dd($current->day);
+         if($current->day <= 10){ dd('yes'); }else{ dd('no'); }
+
 
          $total = 
           $request->data[0]['meter1'] 

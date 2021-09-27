@@ -17,6 +17,7 @@ class Kaz extends Model
         'amount',
         'price',
         'size',
+         'user_id'
             
     ];
 

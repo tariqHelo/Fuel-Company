@@ -14,5 +14,6 @@ class SellingPoint extends Model
            'price1',
            'price2',
            'total',
+           'user_id'
         ];
 }

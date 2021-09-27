@@ -10,9 +10,10 @@ class TransactionActitvity extends Model
     use HasFactory;
 
     protected $fillable = [
-    'actitvity_id',
-    'total',
-    'price'
+        'actitvity_id',
+        'total',
+        'price',
+        'user_id'
     ];
 
     public function actitvity()

@@ -15,6 +15,8 @@ class CreateSellingPointsTable extends Migration
     {
         Schema::create('selling_points', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
            // $table->string('name');
             $table->float('price1')->default(0);
             $table->float('price2')->default(0);

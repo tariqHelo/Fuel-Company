@@ -15,6 +15,8 @@ class CreateRepository95sTable extends Migration
     {
         Schema::create('repository95s', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('petrol95_id')->nullable()->constrained('petrol95s', 'id')->nullOnDelete();
             $table->float('sales')->default(0);
             $table->float('received')->default(0);

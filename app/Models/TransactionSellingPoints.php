@@ -11,7 +11,8 @@ class TransactionSellingPoints extends Model
      protected $fillable = [
         'selling_id',
         'total',
-        'price'
+        'price',
+        'user_id'
      ];
 
     public function selling()

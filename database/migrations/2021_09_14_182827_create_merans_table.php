@@ -15,6 +15,9 @@ class CreateMeransTable extends Migration
     {
         Schema::create('merans', function (Blueprint $table) {
             $table->id();
+                        $table->foreignId('user_id');
+
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('statement')->nullable();
             $table->integer('partial_credit')->nullable();
             $table->integer('total_credit')->nullable();

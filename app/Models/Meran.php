@@ -14,6 +14,7 @@ class Meran extends Model
             'partial_credit',
             'total_credit',
             'partial_debt',
-            'total_debt'
+            'total_debt',
+             'user_id'
     ];
 }

@@ -14,6 +14,7 @@ class ClaimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){ 
+   
         $claims = Claim::all();
         return view('admin.claims.index')->withClaims($claims);
     }

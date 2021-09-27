@@ -16,6 +16,7 @@ class Activities extends Model
          'washing',
          'flat',
          'room',
-         'total'
+         'total',
+         'user_id'
     ];
 }

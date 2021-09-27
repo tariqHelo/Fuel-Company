@@ -16,6 +16,7 @@ class Water extends Model
         'price',
         'value',
         'difference',
+        'user_id'
     ];
 
         

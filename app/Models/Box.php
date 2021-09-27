@@ -25,6 +25,7 @@ class Box extends Model
         'atm',
         'Total_cash_and_cash',
         'balance',
+        'user_id'
       ];
 
     public function petrol91(){

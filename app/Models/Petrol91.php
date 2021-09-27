@@ -17,6 +17,7 @@ class Petrol91 extends Model
              'amount',
              'price',
              'size',
+              'user_id'
             
     ];
 

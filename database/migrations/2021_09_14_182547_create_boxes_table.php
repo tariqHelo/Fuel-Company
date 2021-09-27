@@ -15,6 +15,9 @@ class CreateBoxesTable extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('petrol91_id')->nullable()->constrained('petrol91s', 'id')->nullOnDelete();
             $table->foreignId('kaz_id')->nullable()->constrained('kazs', 'id')->nullOnDelete();
             $table->foreignId('diesel_id')->nullable()->constrained('diesels', 'id')->nullOnDelete();

@@ -28,7 +28,9 @@ use App\Http\Controllers\{
     Repository91Controller,
     Repository95Controller,
     RepositoryDieselController,
-    RepositoryKazController
+    RepositoryKazController,
+    InitialController,
+    MonthlyPriceController
 
 };
 
@@ -95,6 +97,13 @@ Route::resource('delayed', DelayedController::class);
 Route::resource('claims', ClaimController::class);
 /* End Claim Route */
 
+/* Start initial Route */
+Route::resource('initial', InitialController::class);
+/* End initial Route */
+
+/* Start MonthlyPrice Route */
+Route::resource('monthlyprice', MonthlyPriceController::class);
+/* End MonthlyPrice Route */
 
 /* Start Bank Route */
 Route::resource('banks', BankController::class);

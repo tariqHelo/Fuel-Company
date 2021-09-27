@@ -15,6 +15,8 @@ class CreatePetrol91sTable extends Migration
     {
         Schema::create('petrol91s', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('meter')->nullable();
             $table->integer('total')->default(12136877);
             $table->integer('qty')->default(0);

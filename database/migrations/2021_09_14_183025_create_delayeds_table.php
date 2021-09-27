@@ -15,6 +15,8 @@ class CreateDelayedsTable extends Migration
     {
         Schema::create('delayeds', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('police');
             $table->string('ferrule');
             $table->string('tutor');

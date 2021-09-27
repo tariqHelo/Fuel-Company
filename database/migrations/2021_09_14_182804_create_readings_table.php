@@ -15,6 +15,9 @@ class CreateReadingsTable extends Migration
     {
         Schema::create('readings', function (Blueprint $table) {
             $table->id();
+             $table->foreignId('user_id');
+
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

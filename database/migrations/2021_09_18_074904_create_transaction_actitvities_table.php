@@ -15,6 +15,9 @@ class CreateTransactionActitvitiesTable extends Migration
     {
         Schema::create('transaction_actitvities', function (Blueprint $table) {
             $table->id();
+                        $table->foreignId('user_id');
+
+            $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('actitvity_id')->nullable()->constrained('actitvities', 'id')->nullOnDelete();
             $table->float('price')->default(0);
             $table->integer('total')->default(0);

@@ -39,12 +39,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($petrol91s as $petrol91)
+                    @foreach ($items as $item)
                      <tr>
-                        <td>{{$petrol91->created_at->format('d-m-Y')}}</td>
+                        <td>{{$item['created_at']}}</td>
                         {{-- {{dd($items)}} --}}
-                         @if(isset($items))
-                            @foreach($items as $key => $obj)
+                         @if(isset($item))
+                            @foreach(json_decode($item['meter'] , true) as $key => $obj)
                                 <td>{{ $obj['meter1'] }}</td>
                                 <td>{{ $obj['meter2'] }}</td>
                                 <td>{{ $obj['meter3'] }}</td>
@@ -53,13 +53,13 @@
                                 <td>{{ $obj['meter6'] }}</td>
                             @endforeach
                         @endif
-                        <td>{{$petrol91->total}}</td>
-                        <td>{{$petrol91->qty}}</td>
-                        <td>{{$petrol91->caliber}}</td>
-                        <td>{{$petrol91->clear}}</td>
-                        {{-- <td>{{$petrol91->price}}</td> --}}
-                        <td>{{$petrol91->value}}</td>
-                        <td>{{$petrol91->size}}</td>
+                        <td>{{$item['total']}}</td>
+                        <td>{{$item['qty']}}</td>
+                        <td>{{$item['caliber']}}</td>
+                        <td>{{$item['clear']}}</td>
+                        {{-- <td>{{$item->price}}</td> --}}
+                        <td>{{$item['value']}}</td>
+                        <td>{{$item['size']}}</td>
 
                         {{-- <td>
                             @if($product->status=='active')

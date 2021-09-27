@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class RepositoryKaz extends Model
 {
     use HasFactory;
-    
+    protected $fillable = [
+      'user_id'
+            
+    ];
     
 
     public function kaz(){

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reading extends Model
+class Initial extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
-      'user_id'
-            
-    ];
+
+     protected $fillable = [
+        'number_initial',
+        'user_id'
+     ];
 }

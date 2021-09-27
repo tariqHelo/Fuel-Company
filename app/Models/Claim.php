@@ -13,5 +13,6 @@ class Claim extends Model
            'name',
            'total',
            'note',
+           'user_id'
     ];
 }

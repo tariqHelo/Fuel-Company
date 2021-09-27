@@ -11,7 +11,8 @@ class TransactionBank extends Model
     protected $fillable = [
         'bank_id',
         'total',
-        'price'
+        'price',
+        'user_id'
 
     ];
 
