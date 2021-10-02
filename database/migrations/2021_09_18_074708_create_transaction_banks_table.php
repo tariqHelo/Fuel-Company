@@ -15,12 +15,12 @@ class CreateTransactionBanksTable extends Migration
     {
         Schema::create('transaction_banks', function (Blueprint $table) {
             $table->id();
-                        $table->foreignId('user_id');
-
+            $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('bank_id')->nullable()->constrained('banks', 'id')->nullOnDelete();
             $table->float('price')->default(0);
             $table->integer('total')->default(0);
+            $table->longText('note');
             $table->timestamps();
         });
     }

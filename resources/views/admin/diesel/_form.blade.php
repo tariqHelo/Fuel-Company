@@ -1,10 +1,10 @@
 
 <div class="card-body">
     <div class="row">
-      <div class="col-4">
+      {{-- <div class="col-4">
         <label for="exampleInputEmail1">السعر</label>
         <input type="string" name="price" class="form-control"  placeholder="أدخل السعر" value="{{old('price')}}">
-      </div>
+      </div> --}}
       <div class="col-4">
         <label for="exampleInputEmail1">العيار</label>
         <input type="string" name="caliber" class="form-control"  placeholder="أدخل السعر" value="{{old('caliber')}}">

@@ -17,11 +17,11 @@ class CreateSellingPointsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
-           // $table->string('name');
             $table->float('price1')->default(0);
             $table->float('price2')->default(0);
+            $table->float('price3')->default(0);
+            $table->longText('note');
             $table->float('total')->default(0);
-           // $table->enum('status', ['active', 'draft']);
             $table->timestamps();
         });
     }

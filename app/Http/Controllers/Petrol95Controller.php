@@ -13,11 +13,11 @@ class Petrol95Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {    
+        $response = Petrol95::where('user_id' , auth()->id())->get();
+        $items = json_decode($response, true);
          return view('admin.95.index',[
-            // 'petrol91s' => $petrol91s,
-            // 'items' => $items
-
+            'items' => $items
        ]);
     }
 

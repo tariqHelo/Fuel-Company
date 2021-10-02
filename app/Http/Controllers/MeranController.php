@@ -14,7 +14,7 @@ class MeranController extends Controller
      */
     public function index()
     {    
-        $merans = Meran::all();
+        $merans = Meran::where('user_id' , auth()->id())->all();
         return view('admin.meran.index',[
             'merans' => $merans,
         ]);
@@ -41,8 +41,8 @@ class MeranController extends Controller
     public function store(Request $request)
     {   
 
-      $id_credit = Meran::pluck('total_credit')->last();
-      $id_debt = Meran::pluck('total_debt')->last();
+      $id_credit = Meran::where('user_id' , auth()->id())->pluck('total_credit')->last();
+      $id_debt = Meran::where('user_id' , auth()->id())->pluck('total_debt')->last();
     //  dd($total_credit ,$total_debt );
 
         $total_debt = $id_debt + $request->partial_debt;

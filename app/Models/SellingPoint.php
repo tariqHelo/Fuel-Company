@@ -13,6 +13,8 @@ class SellingPoint extends Model
         // 'status'
            'price1',
            'price2',
+           'price3',
+           'note',
            'total',
            'user_id'
         ];

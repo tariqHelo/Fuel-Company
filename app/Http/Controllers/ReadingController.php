@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reading;
 use Illuminate\Http\Request;
+use App\Models\Petrol91;
 
 class ReadingController extends Controller
 {
@@ -13,8 +14,15 @@ class ReadingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        
+        // ->whereBetween('date', [$date_from, $date_to])
+
+          $response = Petrol91::where('user_id' , auth()->id())->get();
+          $items = json_decode($response, true);
+          return view('admin.reads.index',[
+          'items' => $items
+          ]);
     }
 
     /**

@@ -15,9 +15,11 @@ class Petrol95 extends Model
              'qty',
              'caliber',
              'amount',
+             'clear',
              'price',
+             'value',
              'size',
-              'user_id'
+             'user_id'
             
     ];
 

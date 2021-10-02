@@ -26,7 +26,9 @@
                   <th>التاريخ</th>
                   <th>الموازنة الإولي</th>
                   <th>الموازنة الثانية</th>
-
+                  <th>الموازنة الثالثة</th>
+                  <th>الإجمالي</th>
+                  <th>ملاحظات </th>
                   {{-- <th>الحالة</th> --}}
                   <th>الإجراءات</th>
                   </tr>
@@ -39,7 +41,9 @@
                         <th>{{$sellingpoint->created_at->format('d-m-Y')}}</th>
                         <th>{{$sellingpoint->price1}}</th>
                          <th>{{$sellingpoint->price2}}</th>
+                         <th>{{$sellingpoint->price3}}</th>
                          <th>{{$sellingpoint->total}}</th>
+                         <th>{{$sellingpoint->note}}</th>
                         {{-- <td>
                               @if($sellingpoint->status=='active')
                                   <span class="btn btn-success btn-sm">مفعل</span>
@@ -60,8 +64,9 @@
                   <th>التاريخ</th>
                   <th>الموازنة الإولي</th>
                   <th>الموازنة الثانية</th>
-
-                  {{-- <th>الحالة</th> --}}
+                  <th>الموازنة الثالثة</th>
+                   <th>الإجمالي</th>
+                  <th>ملاحظات </th>
                   <th>الإجراءات</th>
 
                   </tr>

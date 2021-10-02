@@ -9,14 +9,8 @@ class Activities extends Model
 {
     use HasFactory;
     protected $fillable = [
-    // 'name',
-    // 'status'
-         'pincher',
-         'grocery',
-         'washing',
-         'flat',
-         'room',
-         'total',
-         'user_id'
+        'name',
+        'status',
+        'user_id',
     ];
 }

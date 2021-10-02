@@ -18,11 +18,11 @@ class CreateDieselsTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('meter')->nullable();
-            $table->integer('total')->default(0);
-            $table->integer('qty')->default(0);
+            $table->integer('total')->default(12136877);
+            $table->float('qty' , 5,4)->default(0);
             $table->integer('caliber')->default(0);
-            $table->integer('clear')->default(0);
-            $table->integer('price')->default(0);
+            $table->float('clear' , 5,4)->default(0);
+            // $table->float('price')->default(0);
             $table->integer('value')->default(0);
             $table->integer('size')->default(0);
             $table->timestamps();

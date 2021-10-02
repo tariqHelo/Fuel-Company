@@ -14,7 +14,7 @@ class SellingPointController extends Controller
      */
     public function index()
     {
-          $sellingpoints = SellingPoint::all();
+          $sellingpoints = SellingPoint::where('user_id' , auth()->id())->all();
             return view('admin.selling_points.index',[
                 'sellingpoints' => $sellingpoints
             ]);
@@ -46,6 +46,8 @@ class SellingPointController extends Controller
            'price1' => $request->price1,
            'price2' => $request->price2,
            'total' => $total,
+            'note ' => $request->note,
+           'user_id' => \Auth::id(),
          ]);
          \Session::flash("msg", "s:تم إضافة نقطة البيع ($sellingpoint->name) بنجاح");
          return redirect()->route('sellingpoints.index');

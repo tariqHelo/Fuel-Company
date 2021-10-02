@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title' , 'بنزين 95')
+@section('title' , 'القراءات')
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
@@ -15,14 +15,14 @@
   <div class="card">
  
               <div class="card-header">
-                 <a type="button" class="btn btn-primary" href="{{ route('petrol95.create') }}">إضافة <i class="fa fa-plus"></i> </a>
+                 {{-- <a type="button" class="btn btn-primary" href="{{ route('.create') }}">إضافة <i class="fa fa-plus"></i> </a> --}}
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>    التاريخ</th>
+                   <th width="10%">التاريخ</th>
                     <th>عداد1 </th>
                     <th>عداد2 </th>
                     <th>عداد3 </th>
@@ -30,19 +30,17 @@
                     <th>عداد5 </th>
                     <th>عداد6 </th>
                     <th>إجمالي</th>
-                    <th>الكمية </th>
-                    <th> عيار</th>
+                    <th>الكمية المباعة</th>
+                    <th>العيار</th>
                     <th>صافي </th>
                     <th>السعر</th>
                     <th>القيمة </th>
-                    <th>المقاس</th>
                   </tr>
                   </thead>
                   <tbody>
-                     @foreach ($items as $item)
-                       <tr>
+                    @foreach ($items as $item)
+                     <tr>
                         <td>{{date(('d-m-Y'), strtotime($item['created_at']))}}</td>
-                        {{-- {{dd($items)}}  --}}
                          @if(isset($item))
                             @foreach(json_decode($item['meter'] , true) as $key => $obj)
                                 <td>{{ $obj['meter1'] }}</td>
@@ -52,33 +50,32 @@
                                 <td>{{ $obj['meter5'] }}</td>
                                 <td>{{ $obj['meter6'] }}</td>
                             @endforeach
-                        @endif
+                         @endif
                         <td>{{$item['total']}}</td>
                         <td>{{$item['qty']}}</td>
                         <td>{{$item['caliber']}}</td>
                         <td>{{$item['clear']}}</td>
-                         {{-- <td>{{$item->price}}</td>  --}}
+                        <td>{{$item['price']}}</td>
                         <td>{{$item['value']}}</td>
-                        <td>{{$item['size']}}</td>
-                    </tr>  
-                    @endforeach 
+
+                    </tr> 
+                    @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>التاريخ</th>
+                    <th width="10%">التاريخ</th>
                     <th>عداد1 </th>
                     <th>عداد2 </th>
                     <th>عداد3 </th>
                     <th>عداد4 </th>
                     <th>عداد5 </th>
                     <th>عداد6 </th>
-                    <th> إجمالي</th>
-                    <th>الكمية </th>
-                    <th> عيار</th>
+                    <th>إجمالي</th>
+                    <th>الكمية المباعة</th>
+                    <th>العيار</th>
                     <th>صافي </th>
                     <th>السعر</th>
                     <th>القيمة </th>
-                    <th>المقاس</th>
                   </tr>
                   </tfoot>
                 </table>

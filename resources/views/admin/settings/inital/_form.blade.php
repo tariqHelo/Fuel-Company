@@ -3,7 +3,7 @@
       <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">قيمة العداد</label>
         <div class="col-sm-8">
-          <input type="number" name="number_initial" class="form-control" placeholder="قيمة العداد"value="{{ old('number_initial' , $settings->number_initial) }}">
+          <input type="number" name="number_initial" class="form-control" placeholder="قيمة العداد"value="{{ old('number_initial') }}">
         </div>
       </div>
       {{-- <div class="form-group row">

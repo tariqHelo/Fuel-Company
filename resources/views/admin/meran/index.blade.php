@@ -12,29 +12,7 @@
     
 
 @section('content')
-<div class="col-md-6">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th style="width: 10px">#</th>
-        <th>دائن كلي</th>
-        <th>مدين كلي</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($merans as $meran)
-          <tr>
-            <td>1.</td>
-            <td>{{$meran->total_credit}}</td>
-            <td><span class="badge bg-danger">{{$meran->total_debt}}</span></td>
-          </tr>
-        @endforeach  
-    </tbody>
-  </table>
-</div>
-<!-- /.card-body -->
         @include('shared.msg')
-
           <div class="card">
             
             <div class="card-header">

@@ -15,9 +15,16 @@ class CreateReadingsTable extends Migration
     {
         Schema::create('readings', function (Blueprint $table) {
             $table->id();
-             $table->foreignId('user_id');
-
+            $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->json('meter')->nullable();
+            // $table->float('total', 2,3)->default(0);
+            // $table->bigInteger('qty')->default(0);
+            // $table->integer('caliber')->default(0);
+            // $table->bigInteger('clear')->default(0);
+            // $table->float('price')->default(0);
+            // $table->bigInteger('value')->unsigned()->default(0);
+            // $table->integer('size')->default(0);
             $table->timestamps();
         });
     }

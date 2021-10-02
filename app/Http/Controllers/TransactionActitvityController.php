@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TransactionActitvity;
 use Illuminate\Http\Request;
+use App\Models\Activities;
 
 class TransactionActitvityController extends Controller
 {
@@ -14,7 +15,11 @@ class TransactionActitvityController extends Controller
      */
     public function index()
     {
-        //
+       $transactitvity = TransactionActitvity::where('user_id' , auth()->id())->with('actitvity')->get();
+      // dd($transactitvity);
+        return view('admin.transaction_actitvity.index',[
+            'transactitvity' => $transactitvity
+        ]);
     }
 
     /**
@@ -24,7 +29,11 @@ class TransactionActitvityController extends Controller
      */
     public function create()
     {
-        //
+        $activities = Activities::where('user_id' , auth()->id())->where('status' ,'=', 'active')->pluck('name' , 'id');
+        return view('admin.transaction_actitvity.create',[
+          'activities' => $activities,
+          'transactitvity' => new TransactionActitvity()
+        ]);
     }
 
     /**
@@ -34,8 +43,19 @@ class TransactionActitvityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        
+        // dd($request->all());
+        
+         $transactitvity = TransactionActitvity::create([
+             'price' => $request->price,
+             'actitvity_id ' => $request->actitvity_id,
+            //  'total' => $request->total,
+             'note ' => $request->note,
+             'user_id' => \Auth::id(),
+         ]);
+         \Session::flash("msg", "s:تم إضافة العملية ($transactitvity->price) بنجاح");
+         return redirect()->route('transaction_bank.index');
     }
 
     /**

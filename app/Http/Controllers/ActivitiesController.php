@@ -14,7 +14,7 @@ class ActivitiesController extends Controller
      */
     public function index()
     {  // dd(20);
-        $activities = Activities::all();
+        $activities = Activities::where('user_id' , auth()->id())->all();
         return view('admin.actitvity.index',[
             'activities' => $activities
         ]);
@@ -39,16 +39,14 @@ class ActivitiesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $total = $request->pincher + $request->grocery +
-        $request->washing + $request->flat + $request->room ;
+    {   dd($request->all());
+        // $total = $request->pincher + $request->grocery +
+        // $request->washing + $request->flat + $request->room ;
         $actitvity = Activities::create([
-            'pincher' => $request->pincher,
-            'grocery' => $request->grocery,
-            'washing' => $request->washing,
-            'flat' => $request->flat,
-            'room' => $request->room,
-            'total' => $total
+            'name' => $request->name,
+            'status' => $request->status,
+            'user_id' => \Auth::id()
+
         ]);
         \Session::flash("msg", "s:تم إضافة النشاط  بنجاح");
         return redirect()->route('actitvity.index');

@@ -17,8 +17,8 @@ class CreateMonthlyPricesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('price1')->default(0);
-            $table->integer('price2')->default(0);
+            $table->float('price1')->default(0);
+            $table->float('price2')->default(0);
             $table->timestamps();
         });
     }

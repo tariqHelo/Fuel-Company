@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Petrol91;
 use Illuminate\Http\Request;
+use App\Models\MonthlyPrice;
+use Carbon\Carbon;
+use App\Models\Initial;
 
 class Petrol91Controller extends Controller
 {
@@ -15,13 +18,10 @@ class Petrol91Controller extends Controller
     public function index()
     {   
       // dd(20);
-       $response = Petrol91::get();
+       $response = Petrol91::where('user_id' , auth()->id())->get();
        $items = json_decode($response, true);
-     // $items = json_decode($response[0]['meter'] , true);
-      //dd($items);
        return view('admin.91.index',[
-        //'petrol91s' => $petrol91s,
-       'items' => $items
+         'items' => $items
        ]);
     }
 
@@ -44,49 +44,35 @@ class Petrol91Controller extends Controller
     public function store(Request $request)
     {
 
-         // $data = $request->data;
-         // dd($request->all());
-
-          $last = Petrol91::pluck('total')->last();
-         // dd($last);
-          $price = $request->price;
-
+         $settings = Initial::first();
+         $settings ? $last = $settings->number_initial : $last = Petrol91::pluck('total')->last();
+         $monthly = MonthlyPrice::first();
          $current = Carbon::today();
          $current->toDateString();
-         // dd($current->day);
-         if($current->day <= 10){ dd('yes'); }else{ dd('no'); }
-
-
-         $total = 
-          $request->data[0]['meter1'] 
-        + $request->data[0]['meter2'] 
-        + $request->data[0]['meter3']
-        + $request->data[0]['meter4']
-        + $request->data[0]['meter5']
-        + $request->data[0]['meter6'];
-        //dd($total);
-        $qty =($last - $total);
-      //  dd($qty);
-        $cal = ($qty - $request->caliber);
-     //   dd($cal);
-        $clear = ($qty - $cal);
-        //return ($cal - $qty);
-       // dd($cal);
-
-        $value = ($clear * $price);
-       // dd($value);
+         $current->day <= 10 ? $price = $monthly->price1 : $price = $monthly->price2;
+         $total = $request->data[0]['meter1'] + $request->data[0]['meter2'] + $request->data[0]['meter3']+
+         $request->data[0]['meter4'] + $request->data[0]['meter5'] + $request->data[0]['meter6'];
+         //dd($price);
+         $qty = $total - $last;
+         //dd($qty);
+         $cal = ($qty - $request->caliber);
+        // dd($cal);
+         $clear = $qty - $request->caliber;
+        // dd($clear);
+         $end = $clear * $price;
+       // dd($end);
 
         $dataJson = json_encode($request->data);
-      //  dd($dataJson);
         $petrol91 =Petrol91::create([
             'meter'        => $dataJson,
             'total'        => $total,
             'qty'          => $qty,
-            'caliber'      => $cal,
+            'caliber'      => $request->caliber,
             'clear'        => $clear,
             'price'        => $price,
-            'value'        => $value,
-            'size'         => $request->size
+            'value'        => $end,
+            'size'         => $request->size,
+            'user_id'     => \Auth::id()
         ]);         
        \Session::flash("msg", "s:تم إضافة المنتج ($petrol91->price) بنجاح");
         return redirect()->route('petrol91.index');

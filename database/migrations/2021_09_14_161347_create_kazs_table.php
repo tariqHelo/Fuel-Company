@@ -15,8 +15,7 @@ class CreateKazsTable extends Migration
     {
         Schema::create('kazs', function (Blueprint $table) {
             $table->id();
-                        $table->foreignId('user_id');
-
+            $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('meter')->nullable();
             $table->integer('total')->default(0);

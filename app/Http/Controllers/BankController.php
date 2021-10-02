@@ -14,7 +14,7 @@ class BankController extends Controller
      */
     public function index()
     {  
-        $banks = Bank::all();
+        $banks = Bank::where('user_id' , auth()->id())->all();
         return view('admin.bank.index',[
             'banks' => $banks
         ]);
@@ -40,7 +40,11 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-       $bank = Bank::create($request->all());
+       $bank = Bank::create([
+          'name' => $request->name,
+          'status' => $request->status,
+          'user_id' => \Auth::id()
+       ]);
        \Session::flash("msg", "s:تم إضافة البنك ($bank->name) بنجاح");
        return redirect()->route('banks.index');
     }

@@ -17,6 +17,10 @@
                         <p class="text-danger">{{ $message }}</p>
                       @enderror
                   </div>
+                  <div class="form-group">
+                    <label>ملاحظات</label>
+                    <input type="text" name="note" class="form-control" placeholder="أضف ملاحظات ...">
+                  </div>
                     {{-- <div class="form-group">
                         <label for="status"> حالة البنك</label>
                         <div>

@@ -15,7 +15,9 @@ class Diesel extends Model
              'qty',
              'caliber',
              'amount',
+             'clear',
              'price',
+             'value',
              'size',
              'user_id'
             

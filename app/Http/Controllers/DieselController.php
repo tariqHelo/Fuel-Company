@@ -13,11 +13,11 @@ class DieselController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $response = Diesel::where('user_id' , auth()->id())->get();
+        $items = json_decode($response, true);
         return view('admin.diesel.index',[
-            // 'petrol91s' => $petrol91s,
-            // 'items' => $items
-
+          'items' => $items
        ]);
     }
 

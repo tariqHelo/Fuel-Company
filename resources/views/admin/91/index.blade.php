@@ -41,7 +41,7 @@
                   <tbody>
                     @foreach ($items as $item)
                      <tr>
-                        <td>{{$item['created_at']}}</td>
+                        <td>{{date(('d-m-Y'), strtotime($item['created_at']))}}</td>
                         {{-- {{dd($items)}} --}}
                          @if(isset($item))
                             @foreach(json_decode($item['meter'] , true) as $key => $obj)
@@ -77,19 +77,18 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th width="10%">التاريخ</th>
+                    <th width="10%">الإجمالي</th>
                     <th>عداد1 </th>
                     <th>عداد2 </th>
                     <th>عداد3 </th>
                     <th>عداد4 </th>
                     <th>عداد5 </th>
                     <th>عداد6 </th>
-                    <th> إجمالي</th>
-                    <th>الكمية </th>
-                    <th> عيار</th>
-                    <th>صافي </th>
-                    {{-- <th>السعر</th> --}}
-                    <th>القيمة </th>
+                    <th> </th>
+                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("qty")}} </th>
+                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("caliber")}} </th>
+                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("clear")}} </th>
+                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("value")}} </th>
                     <th>المقاس</th>
                   </tr>
                   </tfoot>

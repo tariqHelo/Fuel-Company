@@ -198,7 +198,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('actitvity.index')}}" class="nav-link">
+                <a href="{{route('transaction_actitvity.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>تقارير الإنشطة</p>
                 </a>
@@ -206,14 +206,14 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('box.index')}}" class="nav-link">
               <i class="nav-icon fa fa-circle"></i>
               <p>
                 الصندوق                
               </p>
             </a>
           </li>
-           <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fa fa-lightbulb"></i>
                <p>
@@ -237,7 +237,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('readings.index')}}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 القراءات                 

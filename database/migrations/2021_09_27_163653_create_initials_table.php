@@ -17,7 +17,7 @@ class CreateInitialsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('number_initial')->default(0);
+            $table->bigInteger('number_initial')->default(0);
             $table->timestamps();
         });
     }

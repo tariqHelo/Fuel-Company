@@ -23,12 +23,9 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>البنشر </th>
-                    <th>البقالة</th>
-                    <th>المغسلة </th>
-                    <th>الشقة</th>
-                    <th>الغرفة </th>
-                     <th>المجموع</th>
+                    <th>إسم النشاط </th>
+                      <th>الحالة</th>
+
                     <th>الإجراءات</th>
                   </tr>
                 </thead>
@@ -38,19 +35,14 @@
                   @foreach($activities as $activity)
                     <tr>
                         <th>{{$activity->id}}</th>
-                        <th>{{$activity->pincher}}</th>
-                         <th>{{$activity->grocery}}</th>
-                        <th>{{$activity->washing}}</th>
-                         <th>{{$activity->flat}}</th>
-                        <th>{{$activity->room}}</th>
-                        <th>{{$activity->total}}</th>
-                        {{-- <td>
+                        <th>{{$activity->name}}</th>
+                        <td>
                               @if($activity->status=='active')
                                   <span class="btn btn-success btn-sm">مفعل</span>
                               @elseif($activity->status=='draft')
                                   <span class="btn btn-danger btn-sm">غير مفعل</span>
                               @endif
-                        </td> --}}
+                        </td>
                         <td>   
                               <a href="{{route('actitvity.edit' , $activity->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
                               <a href="{{route('actitvity.delete' , $activity->id )}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
@@ -60,14 +52,11 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                  <th>#</th>
-                  <th>البنشر </th>
-                  <th>البقالة</th>
-                  <th>المغسلة </th>
-                  <th>الشقة</th>
-                  <th>الغرفة </th>
-                  <th>المجموع</th>
-                  <th>الإجراءات</th>
+               
+                    <th>إسم النشاط </th>
+                      <th>الحالة</th>
+
+                    <th>الإجراءات</th>
 
                   </tr>
                 </tfoot>

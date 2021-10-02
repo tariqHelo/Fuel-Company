@@ -18,12 +18,12 @@ class CreatePetrol91sTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('meter')->nullable();
-            $table->integer('total')->default(12136877);
-            $table->integer('qty')->default(0);
+            $table->float('total')->default(0);
+            $table->bigInteger('qty')->default(0);
             $table->integer('caliber')->default(0);
-            $table->float('clear')->default(0);
+            $table->bigInteger('clear')->default(0);
             $table->float('price')->default(0);
-            $table->integer('value')->default(0);
+            $table->bigInteger('value')->unsigned()->default(0);
             $table->integer('size')->default(0);
             $table->timestamps();
         });

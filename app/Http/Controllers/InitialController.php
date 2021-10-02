@@ -24,7 +24,7 @@ class InitialController extends Controller
      */
     public function create()
     { 
-        $settings = Initial::first();
+        $settings = Initial::where('user_id' , auth()->id())->first();
         return view('admin.settings.inital.create',[
           'settings'=> $settings
         ]);

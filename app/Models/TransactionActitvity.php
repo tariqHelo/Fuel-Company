@@ -13,6 +13,7 @@ class TransactionActitvity extends Model
         'actitvity_id',
         'total',
         'price',
+        'note',
         'user_id'
     ];
 

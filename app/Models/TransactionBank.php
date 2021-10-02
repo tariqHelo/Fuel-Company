@@ -12,6 +12,7 @@ class TransactionBank extends Model
         'bank_id',
         'total',
         'price',
+        'note',
         'user_id'
 
     ];

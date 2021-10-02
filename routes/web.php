@@ -105,6 +105,12 @@ Route::resource('initial', InitialController::class);
 Route::resource('monthlyprice', MonthlyPriceController::class);
 /* End MonthlyPrice Route */
 
+/* Start Readings Route */
+Route::resource('readings', ReadingController::class);
+/* End Readings Route */
+/* Start Readings Route */
+Route::resource('box', BoxController::class);
+/* End Readings Route */
 /* Start Bank Route */
 Route::resource('banks', BankController::class);
 Route::get('banks/delete/{id}', [BankController::class ,'destroy'])->name('banks.delete');

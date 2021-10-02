@@ -35,7 +35,7 @@ class MonthlyPriceController extends Controller
      */
     public function store(Request $request)
     {
-          $monthly = MonthlyPrice::first();
+          $monthly = MonthlyPrice::where('user_id' , auth()->id())->first();
       //dd($settings);
         if ($monthly) {
             $monthly->update($request->all());
