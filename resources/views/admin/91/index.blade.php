@@ -41,7 +41,9 @@
                   <tbody>
                     @foreach ($items as $item)
                      <tr>
-                        <td>{{date(('d-m-Y'), strtotime($item['created_at']))}}</td>
+                        <td>
+                          {{date(('d-m-Y'), strtotime($item['created_at']))}}
+                        </td>
                         {{-- {{dd($items)}} --}}
                          @if(isset($item))
                             @foreach(json_decode($item['meter'] , true) as $key => $obj)
@@ -57,7 +59,6 @@
                         <td>{{$item['qty']}}</td>
                         <td>{{$item['caliber']}}</td>
                         <td>{{$item['clear']}}</td>
-                        {{-- <td>{{$item->price}}</td> --}}
                         <td>{{$item['value']}}</td>
                         <td>{{$item['size']}}</td>
 
@@ -85,10 +86,10 @@
                     <th>عداد5 </th>
                     <th>عداد6 </th>
                     <th> </th>
-                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("qty")}} </th>
-                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("caliber")}} </th>
-                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("clear")}} </th>
-                    <th>{{DB::table("petrol91s")->where('user_id' , auth()->id())->sum("value")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'petrol91')->where('user_id' , auth()->id())->sum("qty")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'petrol91')->where('user_id' , auth()->id())->sum("caliber")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'petrol91')->where('user_id' , auth()->id())->sum("clear")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'petrol91')->where('user_id' , auth()->id())->sum("value")}} </th>
                     <th>المقاس</th>
                   </tr>
                   </tfoot>
@@ -108,3 +109,10 @@
   </div>
 
 @endsection
+
+
+{{-- @if($item['id'] == 1)
+  {{dd('yes')}}
+  @else
+  {{date(('d-m-Y'), strtotime($item['created_at']))}}
+@endif --}}

@@ -12,7 +12,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route('permissions.store') }}" enctype="multipart/form-data">
             @csrf
-             @include('admin.permissions._form',[
+             @include('manger.permissions._form',[
                   'button' => "إضافة"
                 ])
             </div>

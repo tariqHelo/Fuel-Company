@@ -65,7 +65,7 @@
               <li class="nav-item">
                 <a href="{{route('initial.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>تصفير  العداد</p>
+                  <p>رصيد أول الفترة</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -248,7 +248,7 @@
             <a href="{{route('meran.index')}}" class="nav-link">
               <i class="nav-icon fa fa-lightbulb"></i>
               <p>
-                الميران                 
+                الميزان                 
               </p>
             </a>
           </li>

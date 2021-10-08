@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class Repository91Seeder extends Seeder
+class InputSeeder extends Seeder
 {
     /**
      * Run the database seeds.

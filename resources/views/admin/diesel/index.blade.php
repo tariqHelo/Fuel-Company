@@ -3,10 +3,10 @@
 @section('title' , 'ديزل')
 
 @section('breadcrumb')
-<ol class="breadcrumb float-sm-right">
+{{-- <ol class="breadcrumb float-sm-right">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
     <li class="breadcrumb-item active">Products</li>
-</ol>
+</ol> --}}
 @endsection
 
 @section('content')
@@ -22,18 +22,17 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>    التاريخ</th>
+                    <th>التاريخ</th>
                     <th>عداد1 </th>
                     <th>عداد2 </th>
                     <th>عداد3 </th>
                     <th>عداد4 </th>
                     <th>عداد5 </th>
                     <th>عداد6 </th>
-                    <th>إجمالي</th>
+                    <th> إجمالي</th>
                     <th>الكمية </th>
                     <th> عيار</th>
                     <th>صافي </th>
-                    <th>السعر</th>
                     <th>القيمة </th>
                     <th>المقاس</th>
                   </tr>
@@ -41,7 +40,11 @@
                   <tbody>
                     @foreach ($items as $item)
                        <tr>
-                        <td>{{date(('d-m-Y'), strtotime($item['created_at']))}}</td>
+                        <td>@if($item['id'] == 1)
+                         {{('رصيد أول')}}
+                         @else
+                          {{date(('d-m-Y'), strtotime($item['created_at']))}}
+                        @endif</td>
                         {{-- {{dd($items)}}  --}}
                          @if(isset($item))
                             @foreach(json_decode($item['meter'] , true) as $key => $obj)
@@ -57,7 +60,6 @@
                         <td>{{$item['qty']}}</td>
                         <td>{{$item['caliber']}}</td>
                         <td>{{$item['clear']}}</td>
-                         {{-- <td>{{$item->price}}</td>  --}}
                         <td>{{$item['value']}}</td>
                         <td>{{$item['size']}}</td>
                     </tr>  
@@ -72,12 +74,11 @@
                     <th>عداد4 </th>
                     <th>عداد5 </th>
                     <th>عداد6 </th>
-                    <th> إجمالي</th>
-                    <th>الكمية </th>
-                    <th> عيار</th>
-                    <th>صافي </th>
-                    <th>السعر</th>
-                    <th>القيمة </th>
+                    <th> </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'diesel')->where('user_id' , auth()->id())->sum("qty")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'diesel')->where('user_id' , auth()->id())->sum("caliber")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'diesel')->where('user_id' , auth()->id())->sum("clear")}} </th>
+                    <th>{{DB::table("inputs")->where('type' , '=' , 'diesel')->where('user_id' , auth()->id())->sum("value")}} </th>
                     <th>المقاس</th>
                   </tr>
                   </tfoot>

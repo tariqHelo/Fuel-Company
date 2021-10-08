@@ -13,7 +13,7 @@
         <form method="POST" action="{{ route('permissions.update' , $permission->id) }}">
             @csrf
             @method('PATCH')
-             @include('admin.permissions._form',[
+             @include('manger.permissions._form',[
                     'button' => 'تعديل'
                 ])
             </div>

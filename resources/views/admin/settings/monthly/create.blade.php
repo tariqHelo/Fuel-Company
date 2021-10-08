@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', '')
+@section('title', 'إضافة أسعار الشهر الجديدة')
 
 @section('breadcrumb')
 {{-- <ol class="breadcrumb float-sm-right">
@@ -17,7 +17,7 @@
             <!-- general form elements -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة أسعار الشهر الجديدة</h3>
+                <h3 class="card-title-rtl">بنزين 91</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -36,7 +36,8 @@
 <script>
 
 // $(".js-example-tags").select2({
-//   tags: true
+//              $table->float('price1_91')->default(0);
+            
 // });
 </script>
 @endsection

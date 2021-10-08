@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Claim;
+use App\Models\General;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class ClaimController extends Controller
+class GeneralController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){ 
-   
-        $claims = Claim::where('user_id' , auth()->id())->get();
-        return view('admin.claims.index')->withClaims($claims);
+    public function index()
+    {
+        //
     }
 
     /**
@@ -26,9 +24,7 @@ class ClaimController extends Controller
      */
     public function create()
     {
-        return view('admin.claims.create',[
-            'claim' => new Claim()
-        ]);
+        //
     }
 
     /**
@@ -38,19 +34,17 @@ class ClaimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
-         $claim = Claim::create($request->all());
-         \Session::flash("msg", "s:تم إضافة  ($claim->name) بنجاح");
-         return redirect()->route('claims.index');
+    {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Claim  $claim
+     * @param  \App\Models\General  $general
      * @return \Illuminate\Http\Response
      */
-    public function show(Claim $claim)
+    public function show(General $general)
     {
         //
     }
@@ -58,10 +52,10 @@ class ClaimController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Claim  $claim
+     * @param  \App\Models\General  $general
      * @return \Illuminate\Http\Response
      */
-    public function edit(Claim $claim)
+    public function edit(General $general)
     {
         //
     }
@@ -70,10 +64,10 @@ class ClaimController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Claim  $claim
+     * @param  \App\Models\General  $general
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Claim $claim)
+    public function update(Request $request, General $general)
     {
         //
     }
@@ -81,10 +75,10 @@ class ClaimController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Claim  $claim
+     * @param  \App\Models\General  $general
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Claim $claim)
+    public function destroy(General $general)
     {
         //
     }

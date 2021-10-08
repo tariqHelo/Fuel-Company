@@ -20,9 +20,9 @@
 <div class="col-md-12">
               @include('shared.msg')
             <!-- general form elements -->
-            <div class="card card-success">
+            <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة قراءات جديدة</h3>
+                <h3 class="card-title-rtl">إضافة قراءات ديزل جديدة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

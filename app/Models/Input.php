@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Petrol91 extends Model
+class Input extends Model
 {
     use HasFactory;
-
     protected $fillable = [
+             'type',
              'meter',
              'total',
              'qty',
@@ -20,15 +20,10 @@ class Petrol91 extends Model
              'value',
              'size',
              'user_id'
-            
     ];
 
     protected $casts = [
         'meter' => 'array'
     ];
-
-    // public function getCreatedAtAttribute($date)
-    // {
-    //   return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
-    // }
+    
 }

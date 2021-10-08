@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Box;
+use App\Models\Diesel;
+use App\Models\Kaz;
+use App\Models\Petrol95;
+
+use App\Models\Petrol91;
+
 use Illuminate\Http\Request;
 
 class BoxController extends Controller
@@ -13,8 +19,32 @@ class BoxController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.bank.index');
+    {   
+    //    $data = Petrol91::join('petrol91s', 'petrol91s.id', '=', 'value.user_id')
+    //    ->get(['petrol91s.*']);
+       //dd($data);
+        /*Above code will produce following query
+
+        Select
+        `country`.`country_name`,
+        `state`.`state_name`,
+        `city`.`city_name`
+        from `country`
+        inner join `state`
+        on `state`.`country_id` = `country`.`country_id`
+        inner join `city`
+        on `city`.`state_id` = `state`.`state_id`
+
+        */
+        $res1 = Petrol91::select('value')->get()->toArray();
+        
+      // dd($res1);
+        return view('admin.box.index',[
+           'res1' => $res1,
+        //   'res2' => $res2,
+        //   'res3' => $res3,
+        //   'res4' => $res4
+        ]);
     }
 
     /**

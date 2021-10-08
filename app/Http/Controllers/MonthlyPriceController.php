@@ -23,8 +23,13 @@ class MonthlyPriceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.settings.monthly.create');
+    { 
+        
+        $monthly = MonthlyPrice::where('user_id' , auth()->id())->first();
+      //  dd($monthly);
+        return view('admin.settings.monthly.create',[
+          'monthly' => $monthly
+        ]);
     }
 
     /**
@@ -43,8 +48,15 @@ class MonthlyPriceController extends Controller
             return redirect()->back();
         } else {
              MonthlyPrice::create([
-             'price1' => $request->price1,
-             'price2' => $request->price2,
+             'price1_91' => $request->price1_91 ,
+             'price2_91' => $request->price2_91,
+             'price1_diesel' => $request->price1_diesel,
+             'price2_diesel' => $request->price2_diesel,
+             'price1_95' => $request->price1_95,
+             'price2_95' => $request->price2_95,
+             'price1_kaz' => $request->price1_kaz,
+             'price2_kaz' => $request->price2_kaz,
+             'price_water' => $request->price_water,
              'user_id' => \Auth::id()
              ]);
              \Session::flash("msg", "s:تم إضافة القيمة بنجاح");

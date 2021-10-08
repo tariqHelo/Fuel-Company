@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kaz;
+use App\Models\Input;
 use Illuminate\Http\Request;
-
+use App\Models\MonthlyPrice;
+use Carbon\Carbon;
+use App\Models\Initial;
 class KazController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class KazController extends Controller
      */
     public function index()
     {  
-        $response = Kaz::where('user_id' , auth()->id())->get();
+        $response = Input::where('type', '=' , 'kaz')
+        ->where('user_id' , auth()->id())->get();
         $items = json_decode($response, true);
         return view('admin.kaz.index',[
          'items' => $items
@@ -29,7 +32,7 @@ class KazController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kaz.create');
     }
 
     /**
@@ -40,7 +43,38 @@ class KazController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $last = Input::where('type', '=' , 'kaz')->pluck('total')->last();
+         $monthly = MonthlyPrice::first();
+         $current = Carbon::today();
+         $current->toDateString();
+         $current->day <= 10 ? $price=$monthly->price1_kaz : $price = $monthly->price2_kaz;
+         $total = $request->data[0]['meter1'] + $request->data[0]['meter2'] + $request->data[0]['meter3']+
+         $request->data[0]['meter4'] + $request->data[0]['meter5'] + $request->data[0]['meter6'];
+         //dd($price);
+         $qty = $total - $last;
+         //dd($qty);
+         $cal = ($qty - $request->caliber);
+        // dd($cal);
+         $clear = $qty - $request->caliber;
+        // dd($clear);
+         $end = $clear * $price;
+       // dd($end);
+
+        $dataJson = json_encode($request->data);
+        $kaz =Input::create([
+            'meter'        => $dataJson,
+            'total'        => $total,
+            'qty'          => $qty,
+            'caliber'      => $request->caliber,
+            'clear'        => $clear,
+            'price'        => $price,
+            'value'        => $end,
+            'size'         => $request->size,
+            'type'         =>'kaz',
+            'user_id'     => \Auth::id()
+        ]);         
+       \Session::flash("msg", "s:تم إضافة المنتج ($kaz->price) بنجاح");
+        return redirect()->route('kaz.index');
     }
 
     /**

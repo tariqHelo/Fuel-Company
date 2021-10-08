@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Petrol91;
+use App\Models\Input;
 use Illuminate\Http\Request;
 use App\Models\MonthlyPrice;
 use Carbon\Carbon;
@@ -18,7 +18,8 @@ class Petrol91Controller extends Controller
     public function index()
     {   
       // dd(20);
-       $response = Petrol91::where('user_id' , auth()->id())->get();
+       $response = Input::where('type' , '=' , 'petrol91')
+       ->where('user_id' , auth()->id())->get();
        $items = json_decode($response, true);
        return view('admin.91.index',[
          'items' => $items
@@ -44,26 +45,20 @@ class Petrol91Controller extends Controller
     public function store(Request $request)
     {
 
-         $settings = Initial::first();
-         $settings ? $last = $settings->number_initial : $last = Petrol91::pluck('total')->last();
+        // $settings = Input::get();
+         $last = Input::where('type', '=' , 'petrol91')->pluck('total')->last();
          $monthly = MonthlyPrice::first();
          $current = Carbon::today();
          $current->toDateString();
-         $current->day <= 10 ? $price = $monthly->price1 : $price = $monthly->price2;
+         $current->day <= 10 ? $price=$monthly->price1_91 : $price = $monthly->price2_91;
          $total = $request->data[0]['meter1'] + $request->data[0]['meter2'] + $request->data[0]['meter3']+
          $request->data[0]['meter4'] + $request->data[0]['meter5'] + $request->data[0]['meter6'];
-         //dd($price);
          $qty = $total - $last;
-         //dd($qty);
          $cal = ($qty - $request->caliber);
-        // dd($cal);
          $clear = $qty - $request->caliber;
-        // dd($clear);
          $end = $clear * $price;
-       // dd($end);
-
         $dataJson = json_encode($request->data);
-        $petrol91 =Petrol91::create([
+        $petrol91 =Input::create([
             'meter'        => $dataJson,
             'total'        => $total,
             'qty'          => $qty,
@@ -72,6 +67,7 @@ class Petrol91Controller extends Controller
             'price'        => $price,
             'value'        => $end,
             'size'         => $request->size,
+            'type'         =>'petrol91',
             'user_id'     => \Auth::id()
         ]);         
        \Session::flash("msg", "s:تم إضافة المنتج ($petrol91->price) بنجاح");

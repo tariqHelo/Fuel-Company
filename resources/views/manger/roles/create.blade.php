@@ -10,7 +10,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route('roles.store') }}" enctype="multipart/form-data">
             @csrf
-             @include('admin.roles._form',[
+             @include('manger.roles._form',[
                   'button' => "إضافة"
                 ])
             </div>

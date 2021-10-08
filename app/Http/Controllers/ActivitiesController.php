@@ -14,7 +14,7 @@ class ActivitiesController extends Controller
      */
     public function index()
     {  // dd(20);
-        $activities = Activities::where('user_id' , auth()->id())->all();
+        $activities = Activities::where('user_id' , auth()->id())->get();
         return view('admin.actitvity.index',[
             'activities' => $activities
         ]);
@@ -39,12 +39,13 @@ class ActivitiesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   dd($request->all());
+    {   //dd($request->all());
         // $total = $request->pincher + $request->grocery +
         // $request->washing + $request->flat + $request->room ;
         $actitvity = Activities::create([
             'name' => $request->name,
             'status' => $request->status,
+            'note' => $request->note,
             'user_id' => \Auth::id()
 
         ]);

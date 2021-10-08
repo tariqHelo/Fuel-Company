@@ -14,7 +14,7 @@ class MeranController extends Controller
      */
     public function index()
     {    
-        $merans = Meran::where('user_id' , auth()->id())->all();
+        $merans = Meran::where('user_id' , auth()->id())->get();
         return view('admin.meran.index',[
             'merans' => $merans,
         ]);

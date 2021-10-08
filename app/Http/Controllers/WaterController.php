@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Water;
+use App\Models\Input;
 use Illuminate\Http\Request;
 
 class WaterController extends Controller
@@ -14,8 +14,12 @@ class WaterController extends Controller
      */
     public function index()
     {  
-
-       return view('admin.water.index');
+        $response = Input::where('type', '=' , 'water')
+        ->where('user_id' , auth()->id())->get();
+        $items = json_decode($response, true);
+        return view('admin.water.index',[
+          'items' => $items
+        ]);
     }
 
     /**
@@ -36,7 +40,38 @@ class WaterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $last = Input::where('type', '=' , 'water')->pluck('total')->last();
+         $monthly = MonthlyPrice::first();
+         $current = Carbon::today();
+         $current->toDateString();
+         $current->day <= 10 ? $price=$monthly->price1_kaz : $price = $monthly->price2_kaz;
+         $total = $request->data[0]['meter1'] + $request->data[0]['meter2'] + $request->data[0]['meter3']+
+         $request->data[0]['meter4'] + $request->data[0]['meter5'] + $request->data[0]['meter6'];
+         //dd($price);
+         $qty = $total - $last;
+         //dd($qty);
+         $cal = ($qty - $request->caliber);
+        // dd($cal);
+         $clear = $qty - $request->caliber;
+        // dd($clear);
+         $end = $clear * $price;
+       // dd($end);
+
+        $dataJson = json_encode($request->data);
+        $kaz =Input::create([
+            'meter'        => $dataJson,
+            'total'        => $total,
+            'qty'          => $qty,
+            'caliber'      => $request->caliber,
+            'clear'        => $clear,
+            'price'        => $price,
+            'value'        => $end,
+            'size'         => $request->size,
+            'type'         =>'water',
+            'user_id'      => \Auth::id()
+        ]);         
+       \Session::flash("msg", "s:تم إضافة المنتج ($kaz->price) بنجاح");
+        return redirect()->route('water.index');
     }
 
     /**

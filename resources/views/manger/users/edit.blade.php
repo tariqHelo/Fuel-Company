@@ -12,7 +12,7 @@
               <form action="{{route('users.update' , $user->id)}}" method="POST" class="form-horizontal">
                 @csrf
                 @method('PATCH')
-                 @include('admin.users._form', [
+                 @include('manger.users._form', [
                     'button' => 'تعديل'
                 ])
                 <!-- /.card-footer -->

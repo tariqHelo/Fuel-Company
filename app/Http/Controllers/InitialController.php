@@ -47,7 +47,11 @@ class InitialController extends Controller
             return redirect()->back();
         } else {
              Initial::create([
-             'number_initial' => $request->number_initial,
+             'number_initial'        => $request->number_initial_91,
+             'number_initial_diesel' => $request->number_initial_diesel,
+             'number_initial_95'     => $request->number_initial_95,
+             'number_initial_kaz'    => $request->number_initial_kaz,
+             'number_initial_water'  => $request->number_initial_water,
              'user_id' => \Auth::id()
              ]);
              \Session::flash("msg", "s:تم إضافة القيمة المبدئية بنجاح");

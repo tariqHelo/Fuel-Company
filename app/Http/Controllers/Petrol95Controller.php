@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Petrol95;
+use App\Models\Input;
 use Illuminate\Http\Request;
+use App\Models\MonthlyPrice;
+use Carbon\Carbon;
+use App\Models\Initial;
 
 class Petrol95Controller extends Controller
 {
@@ -14,7 +17,8 @@ class Petrol95Controller extends Controller
      */
     public function index()
     {    
-        $response = Petrol95::where('user_id' , auth()->id())->get();
+        $response = Input::where('type', '=' , 'petrol95')
+        ->where('user_id' , auth()->id())->get();
         $items = json_decode($response, true);
          return view('admin.95.index',[
             'items' => $items
@@ -28,7 +32,7 @@ class Petrol95Controller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.95.create');
     }
 
     /**
@@ -39,7 +43,39 @@ class Petrol95Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $last = Input::where('type', '=' , 'petrol95')->pluck('total')->last();
+         $monthly = MonthlyPrice::first();
+         //dd($monthly->price1_95);
+         $current = Carbon::today();
+         $current->toDateString();
+         $current->day <= 10 ? $price = $monthly->price1_95 : $price = $monthly->price2_95;
+         $total = $request->data[0]['meter1'] + $request->data[0]['meter2'] + $request->data[0]['meter3']+
+         $request->data[0]['meter4'] + $request->data[0]['meter5'] + $request->data[0]['meter6'];
+         //dd($price);
+         $qty = $total - $last;
+         //dd($qty);
+         $cal = ($qty - $request->caliber);
+        // dd($cal);
+         $clear = $qty - $request->caliber;
+        // dd($clear);
+         $end = $clear * $price;
+       // dd($price);
+
+        $dataJson = json_encode($request->data);
+        $petrol95 =Input::create([
+            'meter'        => $dataJson,
+            'total'        => $total,
+            'qty'          => $qty,
+            'caliber'      => $request->caliber,
+            'clear'        => $clear,
+            'price'        => $price,
+            'value'        => $end,
+            'size'         => $request->size,
+            'type'         =>'petrol95',
+            'user_id'     => \Auth::id()
+        ]);         
+       \Session::flash("msg", "s:تم إضافة المنتج ($petrol95->price) بنجاح");
+        return redirect()->route('petrol95.index');
     }
 
     /**

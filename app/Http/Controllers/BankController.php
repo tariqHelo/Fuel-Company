@@ -14,7 +14,7 @@ class BankController extends Controller
      */
     public function index()
     {  
-        $banks = Bank::where('user_id' , auth()->id())->all();
+        $banks = Bank::where('user_id' , auth()->id())->get();
         return view('admin.bank.index',[
             'banks' => $banks
         ]);

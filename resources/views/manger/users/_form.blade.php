@@ -45,7 +45,7 @@
                     </select>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  {{-- <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 control-label">إختيار المستودع</label>
                     <div class="col-sm-10">
                       <select class="form-control select2 {{ $errors->has('repository_id') ? 'is-invalid' : '' }}" name="repository_id" required>
@@ -55,7 +55,7 @@
                         @endforeach
                     </select>
                     </div>
-                  </div>
+                  </div> --}}
 
                  <!-- /.card-body -->
                 <div class="card-footer">

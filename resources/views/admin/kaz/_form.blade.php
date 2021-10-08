@@ -58,7 +58,7 @@
   <!-- /.card-body -->
   <div class="card-footer">
     <button type="submit" class="btn btn-primary">{{$button}}</button>
-        <a href="{{route('petrol91.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
+        <a href="{{route('kaz.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
   </div>
 <!-- /.card -->
   

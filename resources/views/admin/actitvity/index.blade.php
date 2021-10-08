@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'جميع الإنشطة')
+@section('title', 'جميع الخدمات')
 
 
 @section('breadcrumb')

@@ -17,8 +17,20 @@ class CreateMonthlyPricesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->float('price1')->default(0);
-            $table->float('price2')->default(0);
+            $table->float('price1_91')->default(0);
+            $table->float('price2_91')->default(0);
+
+            $table->float('price1_diesel')->default(0);
+            $table->float('price2_diesel')->default(0);
+
+            $table->float('price1_95')->default(0);
+            $table->float('price2_95')->default(0);
+
+            $table->float('price1_kaz')->default(0);
+            $table->float('price2_kaz')->default(0);
+
+            $table->float('price_water')->default(0);
+
             $table->timestamps();
         });
     }

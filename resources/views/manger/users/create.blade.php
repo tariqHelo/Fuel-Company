@@ -11,7 +11,7 @@
               <!-- form start -->
               <form action="{{route('users.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                 @csrf
-                 @include('admin.users._form', [
+                 @include('manger.users._form', [
                     'button' => 'إضافة'
                 ])
                 <!-- /.card-footer -->

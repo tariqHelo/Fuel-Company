@@ -11,7 +11,7 @@
         <form method="POST" action="{{ route('roles.update' , $role->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-             @include('admin.roles._form',[
+             @include('manger.roles._form',[
                   'button' => "تعديل"
                 ])
             </div>

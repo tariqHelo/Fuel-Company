@@ -20,15 +20,15 @@
 <div class="col-md-12">
               @include('shared.msg')
             <!-- general form elements -->
-            <div class="card card-success">
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة قراءات جديدة</h3>
+                <h3 class="card-title-rtl">إضافة قراءات كاز جديدة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form" action="{{route('kaz.store')}}" method="POST">
                 @csrf
-                @include('admin.diesel._form',[
+                @include('admin.kaz._form',[
                   'button' => "إضافة"
                 ])
               </form>

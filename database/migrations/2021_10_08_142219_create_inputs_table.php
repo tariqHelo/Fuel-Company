@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDieselsTable extends Migration
+class CreateInputsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateDieselsTable extends Migration
      */
     public function up()
     {
-        Schema::create('diesels', function (Blueprint $table) {
+        Schema::create('inputs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on("users")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('type',['petrol91' , 'kaz' , 'diesel' , 'petrol95' , 'water' , 'hesnya']);
             $table->json('meter')->nullable();
-            $table->integer('total')->default(12136877);
-            $table->float('qty' , 5,4)->default(0);
+            $table->bigInteger('total')->default(0);
+            $table->bigInteger('qty')->default(0);
             $table->integer('caliber')->default(0);
-            $table->float('clear' , 5,4)->default(0);
-            // $table->float('price')->default(0);
-            $table->integer('value')->default(0);
+            $table->bigInteger('clear')->default(0);
+            $table->float('price')->default(0);
+            $table->bigInteger('value')->unsigned()->default(0);
             $table->integer('size')->default(0);
             $table->timestamps();
         });
@@ -36,6 +37,6 @@ class CreateDieselsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diesels');
+        Schema::dropIfExists('inputs');
     }
 }

@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title' , 'بنزين 91')
+@section('title' , ' الصندوق')
 
 @section('breadcrumb')
-<ol class="breadcrumb float-sm-right">
+{{-- <ol class="breadcrumb float-sm-right">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
     <li class="breadcrumb-item active">Products</li>
 </ol>
-@endsection
+@endsection --}}
 
 @section('content')
   @include('shared.msg')
@@ -15,14 +15,14 @@
   <div class="card">
  
               <div class="card-header">
-                 <a type="button" class="btn btn-primary" href="{{ route('box.create') }}">إضافة <i class="fa fa-plus"></i> </a>
+                 {{-- <a type="button" class="btn btn-primary" href="{{ route('box.create') }}">إضافة <i class="fa fa-plus"></i> </a> --}}
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th width="10%">التاريخ</th>
+                    {{-- <th width="10%">التاريخ</th> --}}
                     <th>91 </th>
                     <th>95 </th>
                     <th>ديزل </th>
@@ -39,15 +39,15 @@
                   </tr>
                   </thead>
                   <tbody>
-                    {{-- @foreach ($items as $item)
+                    @foreach ($res1 as $res)
                      <tr>
-                  
+                        <td>{{$res['value']}}</td>  
                     </tr> 
-                    @endforeach --}}
+                    @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th width="10%">التاريخ</th>
+                    {{-- <th width="10%">التاريخ</th> --}}
                     <th>91 </th>
                     <th>95 </th>
                     <th>ديزل </th>
